@@ -1,0 +1,56 @@
+.dashboard-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://source.unsplash.com/random/1600x900");
+  background-size: cover;
+  filter: brightness(0.5);
+}
+
+.content-container {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.dashboard-title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-container {
+  margin-top: 20px;
+}
+
+.weather-row {
+  justify-content: center;
+}
+
+.weather-card {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.weather-info {
+  margin-bottom: 12px;
+}
+
+.info-label {
+  font-weight: bold;
+}
