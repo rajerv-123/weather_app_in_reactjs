@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Card, Row, Col, Typography, Spin } from "antd";
 import axios from "axios";
-import "./Dashboard.css"; 
+import "./Dashboard.css";
 
 const { Title } = Typography;
 
-const Dashboard = () => {
+const Dashboard = ({ latitude, longitude }) => {
   const [weatherData, setWeatherData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [latitude, setLatitude] = useState(localStorage.getItem("latitude"));
-  const [longitude, setLongitude] = useState(localStorage.getItem("longitude"));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +19,7 @@ const Dashboard = () => {
           setWeatherData(response.data.list);
           setLoading(false);
         } else {
-          console.error("Latitude or longitude not found in localStorage");
+          console.error("Latitude or longitude not provided");
         }
       } catch (error) {
         console.error("Error fetching weather data:", error);
@@ -30,20 +28,6 @@ const Dashboard = () => {
 
     fetchData();
   }, [latitude, longitude]); // Update when latitude or longitude changes
-
-  // Listen for changes in localStorage and update state accordingly
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setLatitude(localStorage.getItem("latitude"));
-      setLongitude(localStorage.getItem("longitude"));
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
 
   return (
     <div className="dashboard-container">

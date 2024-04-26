@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Card, Typography, Space, Spin, Row, Col } from "antd";
 import axios from "axios";
 import "./SearchWithCity.css";
 
 const { Title } = Typography;
 
-const SearchWithCity = () => {
+const SearchWithCity = ({ setLatitude, setLongitude }) => {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -33,10 +33,8 @@ const SearchWithCity = () => {
       if (response.data) {
         console.log("Latitude:", response.data.coord.lat);
         console.log("Longitude:", response.data.coord.lon);
-        localStorage.removeItem("latitude");
-        localStorage.removeItem("longitude");
-        localStorage.setItem("latitude", response.data.coord.lat);
-        localStorage.setItem("longitude", response.data.coord.lon);
+        setLatitude(response.data.coord.lat);
+        setLongitude(response.data.coord.lon);
 
         setWeatherData(response.data);
         setError("");
