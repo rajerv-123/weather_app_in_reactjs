@@ -33,12 +33,8 @@ const SearchWithCity = () => {
       if (response.data) {
         console.log("Latitude:", response.data.coord.lat);
         console.log("Longitude:", response.data.coord.lon);
-
-        // Clear old latitude and longitude from localStorage
         localStorage.removeItem("latitude");
         localStorage.removeItem("longitude");
-
-        // Set new latitude and longitude to localStorage
         localStorage.setItem("latitude", response.data.coord.lat);
         localStorage.setItem("longitude", response.data.coord.lon);
 

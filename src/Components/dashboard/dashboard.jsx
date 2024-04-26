@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Row, Col, Typography, Spin } from "antd";
 import axios from "axios";
-import "./Dashboard.css"; // Import custom CSS for styling
+import "./Dashboard.css"; 
 
 const { Title } = Typography;
 
