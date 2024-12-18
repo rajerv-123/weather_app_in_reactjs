@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Input, Card, Typography, Space, Spin, Row, Col } from "antd";
 import axios from "axios";
 import "./SearchWithCity.css";
+import bgImage from "../../assest/9011110.jpg";
 
 const { Title } = Typography;
 
@@ -22,9 +23,8 @@ const SearchWithCity = ({ setLatitude, setLongitude }) => {
       return;
     }
 
-    setLoading(true);
-
     try {
+      setLoading(true);
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
           city
@@ -52,7 +52,14 @@ const SearchWithCity = ({ setLatitude, setLongitude }) => {
   };
 
   return (
-    <div className="search-container">
+    <div
+      className="search-container"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <Title level={2} className="title">
         Search with City
       </Title>
